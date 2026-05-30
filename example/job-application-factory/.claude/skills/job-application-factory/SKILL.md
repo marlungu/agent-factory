@@ -12,7 +12,7 @@ You coordinate five specialist agents to turn one job posting and one resume int
 **1. Confirm the inputs are present.**
 
 - Resume: look in `input/` for a resume file (`.pdf`, `.docx`, or `.txt`). If none is there, check whether `input/resume.txt` has real content. If you find neither, stop and ask the human to drop their resume into `input/` or paste it into `input/resume.txt`.
-- Job posting: check `input/job_description.txt` for real posting text. If it is empty or still holds the sample, ask the human to paste the posting they are applying to. If the human gives a URL, you may try to fetch it only if web access is available; if the fetch fails, stop and ask them to paste the text instead. Never guess at the posting.
+- Job posting: the human normally pastes the posting text directly into the conversation when they start the run. Use that pasted text. If they did not include a posting, ask them to paste it. (If `input/job_description.txt` holds a real posting, that works too — the sample ships there.) If the human gives only a URL, ask them to paste the text instead; most job sites block fetching. Never guess at the posting. When you invoke the Researcher, pass it the posting text directly in its prompt.
 
 **2. Pick a run name.** Each run writes to its own subfolder so runs do not overwrite each other. Choose a short name from the candidate or role (for example `output/jordan-rivera/` or `output/ops-coordinator/`). If unclear, ask the human, or default to `output/run/`. Create the subfolder. Use this same subfolder for all five files.
 

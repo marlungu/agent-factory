@@ -24,7 +24,7 @@ The factory needs the candidate's resume and the job posting. There is flexibili
 
 The Researcher looks in `input/` for any resume file first; if it finds one, it uses it. If it finds only `resume.txt` with real content, it uses that.
 
-**The job posting** should be pasted text in `input/job_description.txt`. Pasting is the reliable path — most job sites block automated fetching, so a URL may or may not work. If the user gives a URL and web access is available, the Researcher may try it, but if the fetch fails it must stop and ask the user to paste the posting text instead. Never guess at a posting's contents.
+**The job posting** is pasted directly into the conversation by the user when they start the run. This is the easy path — no file to edit. The orchestrator captures the pasted posting and passes it to the Researcher. (A posting saved in `input/job_description.txt` also works as a fallback, and the sample one ships there so the factory runs out of the box.) If the user gives only a URL, ask them to paste the posting text instead — most job sites block automated fetching, so a URL is unreliable. Never guess at a posting's contents.
 
 ## Outputs — one folder per run
 

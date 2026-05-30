@@ -8,3 +8,8 @@ example/job-application-factory/output/*
 
 # OS noise
 .DS_Store
+
+# Ignore personal input files; keep only the shipped samples
+example/job-application-factory/input/*
+!example/job-application-factory/input/job_description.txt
+!example/job-application-factory/input/resume.txt

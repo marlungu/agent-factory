@@ -40,12 +40,15 @@ Researcher → Brief Writer → [you approve] → Resume Tailor → [you approve
 
 1. Open this folder in Claude Code.
 2. The sample input files are already in place, so it runs out of the box. To use your own:
-   - **Resume** — drop your resume file into `input/` (`.pdf`, `.docx`, or `.txt` all work; no need to convert it), or paste the text into `input/resume.txt`.
-   - **Job posting** — paste the posting text into `input/job_description.txt`. Pasting is the reliable path; most job sites block automated fetching, so a URL may not work.
-3. Type:
+   - **Resume** — drop your resume file into `input/` (`.pdf`, `.docx`, or `.txt` all work; no need to convert it).
+   - **Job posting** — you will paste this straight into Claude when you start the run (next step). No file to edit. Pasting beats a URL because most job sites block automated fetching.
+3. Start the run and paste the posting in the same message:
 
    ```
-   Run the job application factory.
+   Run the job application factory on my resume in the input folder.
+   Here is the job posting:
+
+   [paste the full job posting text]
    ```
 
 4. The orchestrator runs each agent in turn and stops at the three gates for your approval. Everything else runs on its own.

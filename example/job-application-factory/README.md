@@ -39,7 +39,9 @@ Researcher → Brief Writer → [you approve] → Resume Tailor → [you approve
 ## How to run it
 
 1. Open this folder in Claude Code.
-2. The sample input files are already in place, so it runs out of the box. To use your own, replace `input/job_description.txt` and `input/resume.txt`.
+2. The sample input files are already in place, so it runs out of the box. To use your own:
+   - **Resume** — drop your resume file into `input/` (`.pdf`, `.docx`, or `.txt` all work; no need to convert it), or paste the text into `input/resume.txt`.
+   - **Job posting** — paste the posting text into `input/job_description.txt`. Pasting is the reliable path; most job sites block automated fetching, so a URL may not work.
 3. Type:
 
    ```
@@ -47,7 +49,7 @@ Researcher → Brief Writer → [you approve] → Resume Tailor → [you approve
    ```
 
 4. The orchestrator runs each agent in turn and stops at the three gates for your approval. Everything else runs on its own.
-5. When it finishes, your package is in `output/`, built in order.
+5. When it finishes, your package is in its own subfolder under `output/` (for example `output/jordan-rivera/`), built in order. Each run gets its own subfolder, so runs do not overwrite each other.
 
 ## The one idea to take away
 

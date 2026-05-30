@@ -14,19 +14,33 @@ Researcher  →  Brief Writer  →  [APPROVE]  →  Resume Tailor  →  [APPROVE
 
 The orchestrator runs the chain. Each agent runs in its own context. Each agent gets only what it needs, passed in directly.
 
-## Files
+## Inputs — two ways to provide them
 
-- `input/job_description.txt` — the posting to apply for
-- `input/resume.txt` — the candidate's current resume
-- `output/` — every agent writes its result here as a separate file
+The factory needs the candidate's resume and the job posting. There is flexibility in how each arrives.
 
-## The output files, in order
+**The resume** can be either:
+- A file dropped into `input/` in any common format (`.pdf`, `.docx`, `.txt`). Claude Code reads these directly. This is the easy path — no copy-paste.
+- Or pasted text in `input/resume.txt`.
 
-1. `output/1-research.md` — extracted requirements and signals
-2. `output/2-brief.md` — what this role actually needs
-3. `output/3-resume-tailored.md` — the rewritten resume
-4. `output/4-cover-letter.md` — the cover letter
-5. `output/5-evaluation.md` — fit score and go/no-go
+The Researcher looks in `input/` for any resume file first; if it finds one, it uses it. If it finds only `resume.txt` with real content, it uses that.
+
+**The job posting** should be pasted text in `input/job_description.txt`. Pasting is the reliable path — most job sites block automated fetching, so a URL may or may not work. If the user gives a URL and web access is available, the Researcher may try it, but if the fetch fails it must stop and ask the user to paste the posting text instead. Never guess at a posting's contents.
+
+## Outputs — one folder per run
+
+Each run writes to its own subfolder inside `output/`, so runs do not overwrite each other.
+
+- The orchestrator picks a short run name (for example, from the candidate's name or the role) and uses `output/<run-name>/`.
+- If unsure, ask the user for a run name, or default to `output/run/`.
+- All five files for a run go in that run's subfolder.
+
+## The output files, in order (inside the run's subfolder)
+
+1. `1-research.md` — extracted requirements and signals
+2. `2-brief.md` — what this role actually needs
+3. `3-resume-tailored.md` — the rewritten resume
+4. `4-cover-letter.md` — the cover letter
+5. `5-evaluation.md` — fit score and go/no-go
 
 ## Hard rules for every agent
 

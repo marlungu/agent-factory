@@ -1,0 +1,10 @@
+# The factory writes results here when run.
+# Keep the folder in Git but ignore everything generated inside it.
+example/job-application-factory/output/*
+!example/job-application-factory/output/.gitkeep
+
+# Claude Code local/personal settings (never commit machine-specific config)
+**/.claude/settings.local.json
+
+# OS noise
+.DS_Store
